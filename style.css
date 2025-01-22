@@ -1,0 +1,9 @@
+/* Отключение пульсации */
+div[data-test-id="VIBE_ANIMATION"] {
+	display: none;
+}
+
+/* Плавный переход у цвета фона */
+div[data-test-id="FULLSCREEN_PLAYER_MODAL"] {
+	transition: background-color 0.5s cubic-bezier(0.95, 0.05, 0.795, 0.035) !important;
+}

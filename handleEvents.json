@@ -1,0 +1,58 @@
+{
+  "sections": [
+    {
+      "title": "Секция",
+      "items": [
+        {
+          "id": "exampleButton",
+          "name": "Кнопка",
+          "description": "Пример кнопки",
+          "type": "button",
+          "bool": false,
+          "defaultParameter": false
+        },
+        {
+          "id": "exampleColor",
+          "name": "Выбор цвета",
+          "description": "Пример выбора цвета",
+          "type": "color",
+          "input": "#fff",
+          "defaultParameter": "#fff"
+        },
+        {
+          "id": "exampleText",
+          "name": "Текстовые поля",
+          "description": "Пример текстовых полей",
+          "type": "text",
+          "buttons": [
+            {
+              "id": "ExampleTextField",
+              "name": "Пример текстового поля 1",
+              "text": "Текстовое поле 1",
+              "defaultParameter": "Текстовое поле 1"
+            },
+            {
+              "id": "ExampleTextFieldTwo",
+              "name": "Пример текстового поля 2",
+              "text": "Текстовое поле 2",
+              "defaultParameter": "Текстовое поле 2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Пример",
+      "items": [
+        {
+          "id": "opacity",
+          "name": "Прозрачность",
+          "description": "Красивая прозрачность полноэкранного плеера",
+          "type": "button",
+          "bool": false,
+          "defaultParameter": false
+        }
+      ]
+    }
+  ]
+}
