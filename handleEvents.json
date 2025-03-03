@@ -38,6 +38,50 @@
               "defaultParameter": "Текстовое поле 2"
             }
           ]
+        },
+        {
+          "id": "ExampleSlider",
+          "name": "Слайдер",
+          "description": "Пример слайдера",
+          "type": "slider",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "value": 50,
+          "defaultParameter": 50
+        },
+        {
+          "id": "ExampleFile",
+          "name": "Файл",
+          "description": "Пример выбора файла",
+          "type": "file",
+          "filePath": "",
+          "defaultParameter": {
+            "filePath": ""
+          },
+          "fileName": ""
+        },
+        {
+          "id": "ExampleSelector",
+          "name": "Селектор",
+          "description": "Пример селектора",
+          "type": "selector",
+          "selected": 1,
+          "options": {
+            "1": {
+              "event": "ExampleOne",
+              "name": "Элемент 1"
+            },
+            "2": {
+              "event": "ExampleTwo",
+              "name": "Элемент 2"
+            },
+            "3": {
+              "event": "ExampleThree",
+              "name": "Элемент 3"
+            }
+          },
+          "defaultParameter": 1
         }
       ]
     },
@@ -49,7 +93,7 @@
           "name": "Прозрачность",
           "description": "Красивая прозрачность полноэкранного плеера",
           "type": "button",
-          "bool": false,
+          "bool": true,
           "defaultParameter": false
         }
       ]

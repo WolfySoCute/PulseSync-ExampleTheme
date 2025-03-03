@@ -1,7 +1,7 @@
 // Получение настроек
-async function getSettings() {
+async function getSettings(name) {
     try {
-        const response = await fetch("http://localhost:2007/get_handle");
+        const response = await fetch(`http://localhost:2007/get_handle?name=${name}`);
         if (!response.ok) throw new Error(`Ошибка сети: ${response.status}`);
   
         const { data } = await response.json();
@@ -34,7 +34,7 @@ function transformJSON(data) {
                     });
                 } else {
                     result[item.id] = {
-                        value: item.bool !== undefined ? item.bool : item.input,
+                        value: item.bool || item.input || item.selected || item.value || item.filePath,
                         default: item.defaultParameter
                     };
                 }
@@ -72,7 +72,7 @@ function applySettings(settings) {
 
 // Обновляем настройки каждые 2 секунды
 setInterval(async () => {
-    const settings = await getSettings();
+    const settings = await getSettings("ExampleTheme");
     if (!settings) return;
 
     applySettings(settings);

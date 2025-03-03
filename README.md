@@ -74,6 +74,7 @@
     "description": "Ознакомительная тема",
     "version": "1.0.0",
     "css": "style.css",
+    "type": "script", // script / theme
     "script": "script.js",
     "tags": [
       "learn file"
@@ -88,6 +89,9 @@
 - `description` - Краткое описание темы.
 - `version` - Версия темы.
 - `css` - Файл стилей (`style.css`).
+- `type` - Тип дополнения. Может быть `script` или `theme`.
+  - `script` - Используется для аддонов. Позволяет запускать сразу несколько аддонов.
+  - `theme` - Используется для тем. Тема может быть выбрана только одна
 - `script` - Файл скрипта (`script.js`).
 - `tags` - Список тегов для удобной категоризации.
 
@@ -163,6 +167,17 @@ CSS-стили — это удобно, но что если нужно дать
 - `type` - `button`.
 - `bool` - Текущее состояние (`true`/`false`).
 - `defaultParameter` - Значение по умолчанию.
+```json
+{
+  "id": "exampleButton",
+  "name": "Кнопка",
+  "description": "Пример кнопки",
+  "type": "button",
+  "bool": false,
+  "defaultParameter": false
+}
+```
+---
 
 2. **Выбор цвета**
 - `id` — Уникальный идентификатор.
@@ -171,17 +186,139 @@ CSS-стили — это удобно, но что если нужно дать
 - `type` — `color`.
 - `input` — Текущее значение цвета в HEX-формате.
 - `defaultParameter` — Значение по умолчанию.
+```json
+{
+  "id": "exampleColor",
+  "name": "Выбор цвета",
+  "description": "Пример выбора цвета",
+  "type": "color",
+  "input": "#fff",
+  "defaultParameter": "#fff"
+}
+```
+---
 
 3. **Текстовые поля**
 - `id` - Уникальный идентификатор.
 - `name` - Отображаемое имя.
 - `description` - Описание.
 - `type` - `text`.
-- `buttons` - Список текстовых полей..
+- `buttons` - Список текстовых полей.
   - `id` - Уникальный идентификатор поля.
   - `name` - Название поля.
   - `text` - Текущее значение.
   - `defaultParameter` - Значение по умолчанию.
+
+```json
+{
+  "id": "exampleText",
+  "name": "Текстовые поля",
+  "description": "Пример текстовых полей",
+  "type": "text",
+  "buttons": [
+    {
+      "id": "ExampleTextField",
+      "name": "Пример текстового поля 1",
+      "text": "Текстовое поле 1",
+      "defaultParameter": "Текстовое поле 1"
+    },
+    {
+      "id": "ExampleTextFieldTwo",
+      "name": "Пример текстового поля 2",
+      "text": "Текстовое поле 2",
+      "defaultParameter": "Текстовое поле 2"
+    }
+  ]
+}
+```
+---
+
+4. **Слайдер**
+- `id` - Уникальный идентификатор.
+- `name` - Отображаемое имя.
+- `description` - Описание.
+- `type` - `slider`.
+- `min` - Минимальное значение слайдера.
+- `max` - Максимальное значение слайдера.
+- `step` - Шаг слайдера.
+- `value` - Текущее значение.
+- `defaultParameter` - Значение по умолчанию.
+```json
+{
+  "id": "ExampleSlider",
+  "name": "Слайдер",
+  "description": "Пример слайдера",
+  "type": "slider",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "value": 50,
+  "defaultParameter": 50
+}
+```
+---
+
+5. **Выбор файла (путь)**
+- `id` - Уникальный идентификатор.
+- `name` - Отображаемое имя.
+- `description` - Описание.
+- `type` - `file`.
+- `filePath` - Текущее значение.
+- `defaultParameter` - Значение по умолчанию.
+  - `filePath` - Путь по умолчанию.
+- `fileName` - Название файла.
+```json
+{
+  "id": "ExampleFile",
+  "name": "Файл",
+  "description": "Пример выбора файла",
+  "type": "file",
+  "filePath": "",
+  "defaultParameter": {
+    "filePath": ""
+  },
+  "fileName": ""
+}
+```
+
+6. **Селектор**
+- `id` - Уникальный идентификатор.
+- `name` - Отображаемое имя.
+- `description` - Описание.
+- `type` - `selector`.
+- `selected` - Текущее значение.
+- `options` - Список элементов селектора.
+  - `ID элемента`:
+    - `event` - Ивент элемента.
+    - `name` - Название элемента.
+- `defaultParameter` - Значение по умолчанию.
+```json
+{
+  "id": "ExampleSelector",
+  "name": "Селектор",
+  "description": "Пример селектора",
+  "type": "selector",
+  "selected": 1,
+  "options": {
+    "1": {
+      "event": "ExampleOne",
+      "name": "Элемент 1"
+    },
+    "2": {
+      "event": "ExampleTwo",
+      "name": "Элемент 2"
+    },
+    "3": {
+      "event": "ExampleThree",
+      "name": "Элемент 3"
+    }
+  },
+  "defaultParameter": 1
+}
+```
+---
+
+
 
 #### Пример настроек
 
@@ -216,13 +353,13 @@ CSS-стили — это удобно, но что если нужно дать
           "type": "text",
           "buttons": [
             {
-              "id": "exampleTextField",
+              "id": "ExampleTextField",
               "name": "Пример текстового поля 1",
               "text": "Текстовое поле 1",
               "defaultParameter": "Текстовое поле 1"
             },
             {
-              "id": "exampleTextFieldTwo",
+              "id": "ExampleTextFieldTwo",
               "name": "Пример текстового поля 2",
               "text": "Текстовое поле 2",
               "defaultParameter": "Текстовое поле 2"
@@ -256,7 +393,9 @@ CSS-стили — это удобно, но что если нужно дать
 Для динамических изменений в теме используется **JavaScript**. С его помощью мы будем получать настройки и применять их в зависимости от выбора пользователя.
 
 #### 1. Получение настроек
-Для получения настроек из PulseSync отправляем запрос по адресу `http://localhost:2007/get_handle`. В ответ получим JSON-объект с настройками. Пример ответа:
+Для получения настроек из PulseSync отправляем запрос по адресу `http://localhost:2007/get_handle?name=НазваниеТемы`. Название обязательно должно совпадать с тем, что указано в `metadata.json`.
+
+В ответ получим JSON-объект с настройками. Пример ответа:
 
 ```json
 {
@@ -289,13 +428,13 @@ CSS-стили — это удобно, но что если нужно дать
             "type": "text",
             "buttons": [
               {
-                "id": "exampleTextField",
+                "id": "ExampleTextField",
                 "name": "Пример текстового поля 1",
                 "text": "Текстовое поле 1",
                 "defaultParameter": "Текстовое поле 1"
               },
               {
-                "id": "exampleTextFieldTwo",
+                "id": "ExampleTextFieldTwo",
                 "name": "Пример текстового поля 2",
                 "text": "Текстовое поле 2",
                 "defaultParameter": "Текстовое поле 2"
@@ -326,9 +465,9 @@ CSS-стили — это удобно, но что если нужно дать
 
 ```js
 // Получение настроек
-async function getSettings() {
+async function getSettings(name) {
     try {
-        const response = await fetch("http://localhost:2007/get_handle");
+        const response = await fetch(`http://localhost:2007/get_handle?name=${name}`);
         if (!response.ok) throw new Error(`Ошибка сети: ${response.status}`);
   
         const { data } = await response.json();
@@ -361,7 +500,7 @@ function transformJSON(data) {
                     });
                 } else {
                     result[item.id] = {
-                        value: item.bool !== undefined ? item.bool : item.input,
+                        value: item.bool || item.input || item.selected || item.value || item.filePath,
                         default: item.defaultParameter
                     };
                 }
@@ -438,7 +577,7 @@ function applySettings(settings) {
 ```js
 // Обновляем настройки каждые 2 секунды
 setInterval(async () => {
-    const settings = await getSettings();
+    const settings = await getSettings("ExampleTheme"); // В скобках название темы из metadata.json
     if (!settings) return;
 
     applySettings(settings);
