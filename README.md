@@ -266,7 +266,6 @@ CSS-стили — это удобно, но что если нужно дать
 - `filePath` - Текущее значение.
 - `defaultParameter` - Значение по умолчанию.
   - `filePath` - Путь по умолчанию.
-- `fileName` - Название файла.
 ```json
 {
   "id": "ExampleFile",
@@ -276,8 +275,7 @@ CSS-стили — это удобно, но что если нужно дать
   "filePath": "",
   "defaultParameter": {
     "filePath": ""
-  },
-  "fileName": ""
+  }
 }
 ```
 
